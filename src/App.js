@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from "react"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+export default class app extends Component{
+
+state = {
+  num:0
+}
+
+add = ( ) =>{
+  if(this.state.num < 10)
+    this.setState({
+      num: this.state.num + 1
+    })
+}
+
+remover = () => {
+  if(this.state.num > 0){
+    this.setState({
+      num: this.state.num -1
+    })
+  }
+}
+
+clear = () => {
+  this.setState({
+    num: 0
+  })
+}
+render(){
+  return(
+    <div>
+      <h1>Contador</h1>
+      <h2>{this.state.num}</h2>
+      <button onClick={this.add}>+</button>
+      <button onClick={this.remover}>-</button>
+      <button onClick={this.clear}>C</button>
+      
     </div>
   );
 }
 
-export default App;
+}
